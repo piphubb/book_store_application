@@ -42,7 +42,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             holder.name.setText(item.getName());
             if (item.getStatus().equals("DEL")){
                 holder.status.setText("Delete");
-                holder.status.setTextColor(context.getResources().getColor(R.color.black));
+                holder.status.setTextColor(context.getResources().getColor(R.color.red));
             }else {
                 holder.status.setText("Active");
                 holder.status.setTextColor(context.getResources().getColor(R.color.black));
@@ -78,7 +78,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             edit = itemView.findViewById(R.id.ivCategoryEdit);
             delete = itemView.findViewById(R.id.ivCategoryDelete);
             name = itemView.findViewById(R.id.tvCategoryName);
-            status = itemView.findViewById(R.id.statusCategory);
+            status = itemView.findViewById(R.id.statusGategory);
         }
     }
     public interface OnClickListener{

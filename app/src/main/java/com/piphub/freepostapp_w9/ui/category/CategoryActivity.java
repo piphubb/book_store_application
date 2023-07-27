@@ -120,7 +120,7 @@ public class CategoryActivity extends BaseBackButtonActivity {
         builder.setPositiveButton("Yes", (DialogInterface.OnClickListener) (dialog, which) -> {
             // When the user click yes button then app will close
             progressBar.setVisibility(View.VISIBLE);
-            apiInterface.deleteCategory(item).enqueue(new Callback<Void>() {
+            apiInterface.deleteCategory(item,UserSharePreference.getAccessToken(this)).enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
                     progressBar.setVisibility(View.GONE);

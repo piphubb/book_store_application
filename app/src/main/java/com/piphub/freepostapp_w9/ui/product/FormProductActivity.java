@@ -49,7 +49,7 @@ public class FormProductActivity extends BaseBackButtonActivity {
         Integer id = intent.getIntExtra("ID", 0);
         if (id != 0) {
             progressBar.setVisibility(View.VISIBLE);
-            apiInterface.getProductById(id).enqueue(new Callback<Product>() {
+            apiInterface.getProductById(id,UserSharePreference.getAccessToken(this)).enqueue(new Callback<Product>() {
                 @Override
                 public void onResponse(Call<Product> call, Response<Product> response) {
                     progressBar.setVisibility(View.GONE);
@@ -127,7 +127,7 @@ public class FormProductActivity extends BaseBackButtonActivity {
         product.setStatus("ACT");
         try {
             progressBar.setVisibility(View.VISIBLE);
-            apiInterface.createProduct(product).enqueue(new Callback<Void>() {
+            apiInterface.createProduct(product,UserSharePreference.getAccessToken(this)).enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
                     progressBar.setVisibility(View.GONE);

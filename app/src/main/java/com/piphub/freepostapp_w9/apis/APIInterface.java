@@ -18,19 +18,21 @@ public interface APIInterface {
     @GET("/api/admin/category/list")
     Call<List<Category>> getAllCategory(@Header("Authorization") String auth);
     @POST("/api/admin/category/create")
-    Call<Void> createCategory(@Body Category responseItem);
+    Call<Void> createCategory(@Body Category responseItem,@Header("Authorization") String auth);
     @GET("/api/admin/category/{id}")
-    Call<Category> getCategoryById(@Path("id")Integer id);
+    Call<Category> getCategoryById(@Path("id")Integer id,@Header ("Authorization") String auth);
     @POST("/api/admin/category/update")
-    Call<Void> updateCategory(@Body Category responseItem);
+    Call<Void> updateCategory(@Body Category responseItem,@Header("Authorization") String auth);
     @POST("/api/admin/category/delete")
-    Call<Void> deleteCategory(@Body Category responseItem);
+    Call<Void> deleteCategory(@Body Category responseItem,@Header("Authorization") String auth);
     @GET("/api/admin/product/list")
     Call<List<Product>> getProducts(@Header("Authorization") String auth);
     @POST("/api/admin/product/create")
-    Call<Void> createProduct(@Body Product req);
+    Call<Void> createProduct(@Body Product req,@Header("Authorization") String auth);
     @GET("/api/admin/product/{id}")
-    Call<Product> getProductById(@Path("id") Integer id);
+    Call<Product> getProductById(@Path("id") Integer id,@Header("Authorization") String auth);
+    @POST("/api/admin/product/delete")
+    Call<Void> deleteProduct(@Body Product req,@Header("Authorization") String auth);
     @POST("/api/oauth/token")
     Call<LoginResponse> login(@Body LoginRequest req);
 }

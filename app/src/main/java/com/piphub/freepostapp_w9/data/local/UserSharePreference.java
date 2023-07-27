@@ -2,6 +2,7 @@ package com.piphub.freepostapp_w9.data.local;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.view.View;
 
 import com.piphub.freepostapp_w9.ui.auth.models.User;
 
@@ -43,5 +44,12 @@ public class UserSharePreference {
         editor.putString("PASSWORD", "");
         editor.putString("ACCESS_TOKEN", "");
         editor.apply();
+    }
+
+    public static String getAccessToken(View.OnClickListener onClickListener) {
+        //User user = new User();
+        //sharedPreferences = context.getSharedPreferences(MY_USER, Context.MODE_PRIVATE);
+        String accessToken = sharedPreferences.getString("ACCESS_TOKEN", "");
+        return "Bearer " + accessToken;
     }
 }

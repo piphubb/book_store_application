@@ -11,6 +11,7 @@ import com.piphub.freepostapp_w9.R;
 import com.piphub.freepostapp_w9.apis.APIClient;
 import com.piphub.freepostapp_w9.apis.APIInterface;
 import com.piphub.freepostapp_w9.app.BaseBackButtonActivity;
+import com.piphub.freepostapp_w9.data.local.UserSharePreference;
 import com.piphub.freepostapp_w9.model.Category;
 
 import retrofit2.Call;
@@ -46,7 +47,7 @@ public class FormCategoryActivity extends BaseBackButtonActivity {
             setTitle("Update Category");
             btnCreate.setText("Updated");
             progressBar.setVisibility(View.VISIBLE);
-            apiInterface.getCategoryById(id).enqueue(new Callback<Category>() {
+            apiInterface.getCategoryById(id,UserSharePreference.getAccessToken(this)).enqueue(new Callback<Category>() {
                 @Override
                 public void onResponse(Call<Category> call, Response<Category> response) {
                     if(response.isSuccessful()){
@@ -85,7 +86,7 @@ public class FormCategoryActivity extends BaseBackButtonActivity {
                 item.setNameKh(nameKh);
                 progressBar.setVisibility(View.VISIBLE);
                 if(item.getId()!=0){
-                    apiInterface.updateCategory(item).enqueue(new Callback<Void>() {
+                    apiInterface.updateCategory(item,UserSharePreference.getAccessToken(this)).enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
                             progressBar.setVisibility(View.GONE);
@@ -102,7 +103,7 @@ public class FormCategoryActivity extends BaseBackButtonActivity {
                         }
                     });
                 }else {
-                    apiInterface.createCategory(item).enqueue(new Callback<Void>() {
+                    apiInterface.createCategory(item,UserSharePreference.getAccessToken(this)).enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
                             progressBar.setVisibility(View.GONE);

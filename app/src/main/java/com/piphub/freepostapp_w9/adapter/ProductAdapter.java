@@ -12,9 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.piphub.freepostapp_w9.R;
-import com.piphub.freepostapp_w9.model.Category;
 import com.piphub.freepostapp_w9.model.Product;
-import com.piphub.freepostapp_w9.ui.category.FormCategoryActivity;
 import com.piphub.freepostapp_w9.ui.product.FormProductActivity;
 
 import java.util.List;
@@ -44,7 +42,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             holder.name.setText(item.getName());
             if (item.getStatus().equals("DEL")){
                 holder.status.setText("Delete");
-                holder.status.setTextColor(context.getResources().getColor(R.color.black));
+                holder.status.setTextColor(context.getResources().getColor(R.color.red));
             }else {
                 holder.status.setText("Active");
                 holder.status.setTextColor(context.getResources().getColor(R.color.black));
@@ -83,7 +81,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             edit = itemView.findViewById(R.id.ivCategoryEdit);
             delete = itemView.findViewById(R.id.ivCategoryDelete);
             name = itemView.findViewById(R.id.tvCategoryName);
-            status = itemView.findViewById(R.id.statusCategory);
+            status = itemView.findViewById(R.id.statusProduct);
             categoryName = itemView.findViewById(R.id.statusCategoryMark);
         }
     }
